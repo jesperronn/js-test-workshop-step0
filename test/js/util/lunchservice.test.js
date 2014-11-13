@@ -9,16 +9,24 @@ describe('lunchservice test', function() {
 	var lunchService;
 
 	beforeEach(function() {
-		lunchService = {
-			listAll: function() {
-				// todo: use promise
-				return mockedData;
-			}
-		};
+		lunchService = window.lunchService;
+		// lunchService = {
+		// 	listAll: function() {
+		// 		// todo: use promise
+		// 		return mockedData;
+		// 	}
+		// };
 	});
 
 	it('lists all lunchs', function() {
-		expect(lunchService.listAll()).toContain({'id':100,'name':'Engelsk Bøf','price':85});
+		expect(lunchService.listAllNow()).toContain({'id':100,'name':'Engelsk Bøf','price':85});
+	});
+
+	it('lists all promised lunches', function(done) {
+		lunchService.listAll().then( function(lunches) {
+			expect(lunches).toContain({'id':100,'name':'Engelsk Bøf','price':85});
+			done();
+		});
 	});
 });
 
