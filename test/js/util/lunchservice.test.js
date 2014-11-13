@@ -33,16 +33,15 @@ describe('lunchservice test', function() {
 
 		it('lists all promised lunches', function(done) {
 			//jasmine.
-			var promise = lunchService.listAll();
-
-			jasmine.clock().tick(6000);
-
-			promise.then( function(lunches) {
+			lunchService.listAll().then( function(lunches) {
 				expect(lunches).toContain({'id':100,'name':'Engelsk Bøf','price':85});
 				done();
 			});
+
+			jasmine.clock().tick(6000);
+
 		});
-		
+
 	});
 
 });
