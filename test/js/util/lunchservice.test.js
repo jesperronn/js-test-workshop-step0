@@ -22,11 +22,28 @@ describe('lunchservice test', function() {
 		expect(lunchService.listAllNow()).toContain({'id':100,'name':'Engelsk Bøf','price':85});
 	});
 
-	it('lists all promised lunches', function(done) {
-		lunchService.listAll().then( function(lunches) {
-			expect(lunches).toContain({'id':100,'name':'Engelsk Bøf','price':85});
-			done();
+	describe('async testing', function(){
+		beforeEach(function() {
+			jasmine.clock().install();
 		});
+
+		afterEach(function() {
+			jasmine.clock().uninstall();
+		});
+
+		it('lists all promised lunches', function(done) {
+			//jasmine.
+			var promise = lunchService.listAll();
+
+			jasmine.clock().tick(6000);
+
+			promise.then( function(lunches) {
+				expect(lunches).toContain({'id':100,'name':'Engelsk Bøf','price':85});
+				done();
+			});
+		});
+		
 	});
+
 });
 

@@ -7,11 +7,12 @@
 	];
 
     window.lunchService = {
+    	DELAY: 500,
     	listAll: function() {
 	    	var deferred = $.Deferred();
 	        window.setTimeout(function () {
 	            deferred.resolve(mockedData);
-	        }, 4000);
+	        }, this.DELAY);
 	        return deferred.promise();
 	    },
 	    listAllNow: function() { return mockedData; }
