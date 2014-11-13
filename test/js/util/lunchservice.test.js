@@ -42,7 +42,17 @@ describe('lunchservice test', function() {
 				done();
 			});
 		});
-		
+	});
+
+	describe('distance of time', function() {
+		var distance;
+		beforeEach(function() {
+			distance = lunchService.distance;
+		});
+
+		it('should have method defined', function(){
+			expect(distance).toBeDefined();
+		});
 	});
 
 });

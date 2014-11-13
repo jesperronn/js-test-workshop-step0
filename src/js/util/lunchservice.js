@@ -15,7 +15,11 @@
 	        }, this.DELAY);
 	        return deferred.promise();
 	    },
-	    listAllNow: function() { return mockedData; }
+	    listAllNow: function() { return mockedData; },
+
+        distance: function(otherDate){
+            return otherDate;
+        }
 	};
 
     // window.allCheaperThan = function(number) {
