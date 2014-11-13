@@ -56,4 +56,3 @@ describe('lunchservice test', function() {
 	});
 
 });
-
